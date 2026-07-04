@@ -3,13 +3,13 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mypackage"
+name = "patternify"
 version = "0.0.1"
-description = "Simple Python utilities"
+description = "Python package that generates Patterns."
 readme = "README.md"
 requires-python = ">=3.9"
 
-authors = [{name = "Your Name", email = "you@example.com"}]
+authors = [{name = "Nikish Daniel", email = "nikishdaniel1@gmail.com"}]
 
 license = {text = "MIT"}
 
