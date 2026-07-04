@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/patternify/__init__.py
+src/patternify/pattern.py
+src/patternify.egg-info/PKG-INFO
+src/patternify.egg-info/SOURCES.txt
+src/patternify.egg-info/dependency_links.txt
+src/patternify.egg-info/top_level.txt

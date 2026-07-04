@@ -1,0 +1,75 @@
+Metadata-Version: 2.4
+Name: patternify
+Version: 0.0.1
+Summary: Python package that generates Patterns.
+Author-email: Nikish Daniel <nikishdaniel1@gmail.com>
+License: MIT
+Keywords: python,utility
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file
+
+# My Package
+A Python Package for generating Patterns
+
+## Installation
+pip install patternify
+
+## Usage Examples
+### Example 1 - Square Pattern
+```python
+from patternify import square
+
+print(square(5)) # normal pattern '*'
+print(square(8,pattern='#')) # prints pattern with '#'
+```
+```
+Output
+
+*****
+*****
+*****
+*****
+*****
+
+********
+*######*
+*######*
+*######*
+*######*
+*######*
+*######*
+********
+
+```
+---
+
+### Example 2 - Hollow Square Pattern
+```python
+from patternify import hollow_square
+
+print(hollow_square(7,space='~'))
+print(hollow_square(5,pattern='#',space='~'))
+```
+```
+Output
+
+*******
+*~~~~~*
+*~~~~~*
+*~~~~~*
+*~~~~~*
+*~~~~~*
+*******
+
+#####
+#~~~#
+#~~~#
+#~~~#
+#####
+```
+---
