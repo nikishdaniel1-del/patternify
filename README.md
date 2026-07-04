@@ -1,4 +1,4 @@
-# MyPackage
+# My Package
 A Python Package for generating Patterns
 
 ## Installation
