@@ -54,13 +54,3 @@ def hollow_pyramid(rows,pattern='*',space=' '):
         if i==1 or i==rows:result += ' '*(rows-i)+pattern*(2*i-1)+'\n'
         else:result += ' '*(rows-i)+pattern+space*(2*(i-1)-1)+pattern+'\n'
     return result
-
-
-# print(square(5))
-# print(hollow_square(8,space='#'))
-# print(left_triangle(6))
-# print(hollow_left_triangle(8))
-# print(right_triangle(7))
-# print(hollow_right_triangle(8,space='#'))
-# print(pyramid(8,'#'))
-# print(hollow_pyramid(8,space='#'))
