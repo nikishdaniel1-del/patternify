@@ -1,4 +1,3 @@
-from .square import *
-from .triangle import *
+from .pattern import *
 
 __version__ = '0.0.1'
