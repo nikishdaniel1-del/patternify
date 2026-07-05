@@ -54,3 +54,36 @@ def hollow_pyramid(rows,pattern='*',space=' '):
         if i==1 or i==rows:result += ' '*(rows-i)+pattern*(2*i-1)+'\n'
         else:result += ' '*(rows-i)+pattern+space*(2*(i-1)-1)+pattern+'\n'
     return result
+
+def inverted_pyramid(rows,pattern='*'):
+    result = ''
+    for i in range(rows):
+        result += ' '*i+pattern*(2*rows-2*i-1)+'\n'
+    return result
+
+def hollow_inverted_pyramid(rows,pattern='*',space=' '):
+    result = ''
+    for i in range(rows):
+        base = 2*rows-2*i-1
+        if i==0 or i==rows-1:result += ' '*i+pattern*base+'\n'
+        else:result += ' '*i+pattern+space*(base-2)+pattern+'\n'
+    return result
+
+def diamond(rows,pattern='*'):
+    index = reverse = 0
+    half = rows//2
+    result = ''
+    for i in range(rows):
+        if i==half:
+            reverse = 1
+            if rows%2:
+                result += pattern*(2*index+1)+'\n';index-=1;continue
+            index-=1
+        result += ' '*(half-index)+pattern*(2*index+1)+'\n'
+        if reverse:index-=1
+        else:index+=1
+    return result
+
+print(inverted_pyramid(7))
+print(hollow_inverted_pyramid(7))
+print(diamond(7))
