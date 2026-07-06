@@ -1,6 +1,6 @@
 def checkInputs(patterns,space):
     result = ''
-    if len(patterns)!=len(space):result = 'The Length of both Pattern and the Space should be equal'
+    if len(patterns)!=len(space):result = 'The Length of both Pattern and the Space should be equal.'
     elif not space:result = 'The space must be " " or any character not empty character.'
     return result
 
@@ -57,8 +57,8 @@ def hollow_pyramid(rows,pattern='*',space=' '):
     if check:return check
     result = ''
     for i in range(1,rows+1):
-        if i==1 or i==rows:result += ' '*(rows-i)+pattern*(2*i-1)+'\n'
-        else:result += ' '*(rows-i)+pattern+space*(2*(i-1)-1)+pattern+'\n'
+        if i==1 or i==rows:result += ' '*len(pattern)*(rows-i)+pattern*(2*i-1)+'\n'
+        else:result += ' '*len(pattern)*(rows-i)+pattern+space*(2*(i-1)-1)+pattern+'\n'
     return result[:-1]
 
 def inverted_pyramid(rows,pattern='*'):
@@ -72,8 +72,8 @@ def hollow_inverted_pyramid(rows,pattern='*',space=' '):
     result = ''
     for i in range(rows):
         base = 2*rows-2*i-1
-        if i==0 or i==rows-1:result += ' '*i+pattern*base+'\n'
-        else:result += ' '*i+pattern+space*(base-2)+pattern+'\n'
+        if i==0 or i==rows-1:result += ' '*len(pattern)*i+pattern*base+'\n'
+        else:result += ' '*len(pattern)*i+pattern+space*(base-2)+pattern+'\n'
     return result[:-1]
 
 def diamond(rows,pattern='*'):
@@ -127,6 +127,6 @@ def hollow_butterfly(rows,pattern='*',space=' '):
     result = ''
     return result
 
-print(hollow_square(6,'# ','  '))
+# print(hollow_square(6,'# ','~ '))
 # print(diamond(7,pattern='#  '))
 # print(hollow_diamond(7,pattern='*  ',space='~  '))
