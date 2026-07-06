@@ -144,3 +144,5 @@ def hollow_hourglass(rows,pattern='*',space=' '):
     if check:return check
     result = ''
     return result
+
+print(butterfly(8,'* '))
