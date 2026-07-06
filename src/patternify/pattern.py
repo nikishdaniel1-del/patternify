@@ -104,8 +104,7 @@ def hollow_diamond(rows,pattern='*',space=' '):
             index-=1
         if i==0 or i==rows-1:result += ' '*len(space)*(half-index)+pattern+'\n'
         else:result += ' '*len(space)*(half-index)+pattern+space*(2*index-1)+pattern+'\n'
-        if reverse:index-=1
-        else:index+=1
+        index += -1 if reverse else 1
     return result[:-1]
 
 def butterfly(rows,pattern='*'):
@@ -127,6 +126,22 @@ def hollow_butterfly(rows,pattern='*',space=' '):
     result = ''
     return result
 
-# print(hollow_square(6,'# ','~ '))
-# print(diamond(7,pattern='#  '))
-# print(hollow_diamond(7,pattern='*  ',space='~  '))
+def hourglass(rows,pattern='*'):
+    result = ''
+    index = reverse = 0
+    half = rows//2
+    for i in range(rows):
+        if i==half:
+            reverse = 1
+            index -= 1
+            if rows%2:result += ' '*len(pattern)*(index+1)+pattern+'\n';continue
+        result += ' '*len(pattern)*index+pattern*(rows-2*index)+'\n'
+        index += -1 if reverse else 1
+    return result[:-1]
+
+def hollow_hourglass(rows,pattern='*',space=' '):
+    check = checkInputs(pattern,space)
+    if check:return check
+    result = ''
+    return result
+
