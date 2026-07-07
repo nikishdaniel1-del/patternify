@@ -42,9 +42,10 @@ def hollow_right_triangle(rows,pattern='*',space=' '):
     check = checkInputs(pattern,space)
     if check:return check
     result = ''
+    length = len(pattern)
     for i in range(1,rows+1):
-        if i==1 or i==rows:result += ' '*len(pattern)*(rows-i)+pattern*i+'\n'
-        else:result += ' '*len(pattern)*(rows-i)+pattern+space*(i-2)+pattern+'\n'
+        if i==1 or i==rows:result += ' '*length*(rows-i)+pattern*i+'\n'
+        else:result += ' '*length*(rows-i)+pattern+space*(i-2)+pattern+'\n'
     return result[:-1]
 
 def pyramid(rows,pattern='*'):
@@ -56,9 +57,10 @@ def hollow_pyramid(rows,pattern='*',space=' '):
     check = checkInputs(pattern,space)
     if check:return check
     result = ''
+    length = len(pattern)
     for i in range(1,rows+1):
-        if i==1 or i==rows:result += ' '*len(pattern)*(rows-i)+pattern*(2*i-1)+'\n'
-        else:result += ' '*len(pattern)*(rows-i)+pattern+space*(2*(i-1)-1)+pattern+'\n'
+        if i==1 or i==rows:result += ' '*length*(rows-i)+pattern*(2*i-1)+'\n'
+        else:result += ' '*length*(rows-i)+pattern+space*(2*(i-1)-1)+pattern+'\n'
     return result[:-1]
 
 def inverted_pyramid(rows,pattern='*'):
@@ -70,13 +72,15 @@ def hollow_inverted_pyramid(rows,pattern='*',space=' '):
     check = checkInputs(pattern,space)
     if check:return check
     result = ''
+    length = len(pattern)
     for i in range(rows):
         base = 2*rows-2*i-1
-        if i==0 or i==rows-1:result += ' '*len(pattern)*i+pattern*base+'\n'
-        else:result += ' '*len(pattern)*i+pattern+space*(base-2)+pattern+'\n'
+        if i==0 or i==rows-1:result += ' '*length*i+pattern*base+'\n'
+        else:result += ' '*length*i+pattern+space*(base-2)+pattern+'\n'
     return result[:-1]
 
 def diamond(rows,pattern='*'):
+    length = len(pattern)
     index = reverse = 0
     half = rows//2
     result = ''
@@ -85,7 +89,7 @@ def diamond(rows,pattern='*'):
             reverse = 1
             if rows%2:result += pattern*(2*index+1)+'\n';index-=1;continue
             index-=1
-        result += ' '*len(pattern)*(half-index)+pattern*(2*index+1)+'\n'
+        result += ' '*length*(half-index)+pattern*(2*index+1)+'\n'
         if reverse:index-=1
         else:index+=1
     return result[:-1]
@@ -94,6 +98,7 @@ def hollow_diamond(rows,pattern='*',space=' '):
     check = checkInputs(pattern,space)
     if check:return check
     result = ''
+    length = len(pattern)
     index = reverse = 0
     half = rows//2
     for i in range(rows):
@@ -102,13 +107,14 @@ def hollow_diamond(rows,pattern='*',space=' '):
             if rows%2:
                 result += pattern+space*(2*index-1)+pattern+'\n';index-=1;continue
             index-=1
-        if i==0 or i==rows-1:result += ' '*len(space)*(half-index)+pattern+'\n'
-        else:result += ' '*len(space)*(half-index)+pattern+space*(2*index-1)+pattern+'\n'
+        if i==0 or i==rows-1:result += ' '*length*(half-index)+pattern+'\n'
+        else:result += ' '*length*(half-index)+pattern+space*(2*index-1)+pattern+'\n'
         index += -1 if reverse else 1
     return result[:-1]
 
 def butterfly(rows,pattern='*'):
     result = ''
+    length = len(pattern)
     reverse = 0
     index = 1
     half = rows//2
@@ -116,7 +122,7 @@ def butterfly(rows,pattern='*'):
         if i==half:
             reverse=1;index -= 1
             if rows%2:result += (pattern*rows).strip()+'\n';continue
-        result += (pattern*index+' '*len(pattern)*(rows-(2*index))+pattern*index).strip()+'\n'
+        result += (pattern*index+' '*length*(rows-(2*index))+pattern*index).strip()+'\n'
         index += -1 if reverse else 1
     return result[:-1]
 
@@ -124,18 +130,31 @@ def hollow_butterfly(rows,pattern='*',space=' '):
     check = checkInputs(pattern,space)
     if check:return check
     result = ''
-    return result
+    length = len(pattern)
+    reverse = 0
+    index = 1
+    half = rows//2
+    for i in range(rows):
+        if i==0 or i==rows-1:result += pattern+space*(rows-(2*index))+pattern+'\n';index += 1;continue
+        elif i==half:
+            reverse = 1
+            index -= 1
+            if rows%2:result += pattern+space*(index-1)+pattern+space*(index-1)+pattern+'\n';continue
+        result += pattern+space*(index-2)+pattern+' '*length*(rows-(2*index))+pattern+space*(index-2)+pattern+'\n'
+        index += -1 if reverse else 1
+    return result[:-1]
 
 def hourglass(rows,pattern='*'):
     result = ''
+    length = len(pattern)
     index = reverse = 0
     half = rows//2
     for i in range(rows):
         if i==half:
             reverse = 1
             index -= 1
-            if rows%2:result += ' '*len(pattern)*(index+1)+pattern+'\n';continue
-        result += ' '*len(pattern)*index+pattern*(rows-2*index)+'\n'
+            if rows%2:result += ' '*length*(index+1)+pattern+'\n';continue
+        result += ' '*length*index+pattern*(rows-2*index)+'\n'
         index += -1 if reverse else 1
     return result[:-1]
 
@@ -143,6 +162,29 @@ def hollow_hourglass(rows,pattern='*',space=' '):
     check = checkInputs(pattern,space)
     if check:return check
     result = ''
-    return result
+    length = len(pattern)
+    index = reverse = 0
+    half = rows//2
+    for i in range(rows):
+        if i==half:
+            reverse = 1
+            index -= 1
+            if rows%2:result += ' '*length*(index+1)+pattern+'\n';continue
+        result += ' '*length*index+pattern*(rows-2*index)+'\n'
+        index += -1 if reverse else 1
+    return result[:-1]
 
-print(butterfly(8,'* '))
+def x_pattern(rows,pattern='*'):
+    result = ''
+    index = reverse = 0
+    length = len(pattern)
+    half = rows//2
+    for i in range(rows):
+        if i==half:
+            reverse = 1
+            index -= 1
+            if rows%2:result += ' '*length*(index+1)+pattern+'\n';continue
+        result += ' '*length*index+pattern+' '*length*(rows-2*(index+1))+pattern+'\n'
+        index += -1 if reverse else 1
+    return result[:-1]
+
